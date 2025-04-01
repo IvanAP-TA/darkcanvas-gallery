@@ -25,6 +25,6 @@ export default defineConfig(({ mode }) => ({
     },
   },
   optimizeDeps: {
-    include: ['react-helmet-async']
+    include: ['react-helmet-async', 'react-lazy-load-image-component']
   }
 }));
