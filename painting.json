@@ -1,0 +1,127 @@
+[
+    {
+        "id": "1",
+        "title": "Happiness",
+        "dimensions": "31.5 W x 23.6 H x 0.8 D in",
+        "price": "$1,535",
+        "medium": "Oil on Canvas",
+        "description": "This artwork is a celebration of the rich and colorful tradition of Naples, drawing inspiration from the iconic figure of Pulcinella and the vibrant folklore that permeates the city. The lively and whimsical nature of Neapolitan culture served as a wellspring of creative influence, infusing this painting with a sense of joy and playfulness...",
+        "year": "2022",
+        "url": "https://www.saatchiart.com/art/Painting-Happiness/2284565/10999217/view"
+    },
+    {
+        "id": "2",
+        "title": "Zeus's Wrath",
+        "dimensions": "19.7 W x 15.7 H x 0.8 D in",
+        "price": "$1,010",
+        "medium": "Oil on Canvas",
+        "description": "This artwork is a testament to the powerful influence of nature and mythology on my creative journey. Inspired by the tumultuous beauty of stormy seas and the timeless tales of ancient gods, this painting seeks to transport viewers to a world where the elements of the natural world merge with the realm of mythology...",
+        "year": "2020",
+        "url": "https://www.saatchiart.com/art/Painting-Zeus-s-Wrath/2284565/10875145/view"
+    },
+    {
+        "id": "3",
+        "title": "Homage to Salvador Dalí",
+        "dimensions": "19.7 W x 27.6 H x 0.8 D in",
+        "price": "$1,470",
+        "medium": "Oil on Canvas",
+        "description": "This artwork stands as a testament to my fascination with the enigmatic and surreal world of Salvador Dalí. Depicting Christ in the unmistakable style of the great surrealist, the painting emerges from the canvas like a dream...",
+        "year": "2018",
+        "url": "https://www.saatchiart.com/art/Painting-Homage-to-Salvador-Dal/2284565/10907877/view"
+    },
+    {
+        "id": "4",
+        "title": "Reminiscence",
+        "dimensions": "19.7 W x 19.7 H x 0.8 D in",
+        "price": "$1,342",
+        "medium": "Oil on Canvas",
+        "description": "Creating this artwork was an exploration of the surreal and enigmatic, inspired by the works of Giorgio De Chirico. It's one of my first forays into the realm of metaphysical art, a style that has always fascinated me for its ability to evoke a sense of mystery and intrigue...",
+        "year": "2020",
+        "url": "https://www.saatchiart.com/art/Painting-Reminiscence/2284565/10875147/view"
+    },
+    {
+        "id": "5",
+        "title": "Wine, grapes, sea",
+        "dimensions": "31.5 W x 23.6 H x 0.8 D in",
+        "price": "$4,400",
+        "medium": "Oil on Canvas",
+        "description": "This painting is a testament to mastery in photorealistic painting. With details so sharp and lifelike that they seem to emerge from the canvas, it captures the beauty and essence of a serene and fulfilling moment...",
+        "year": "2021",
+        "url": "https://www.saatchiart.com/art/Painting-Wine-grapes-sea/2284565/10875148/view"
+    },
+    {
+        "id": "6",
+        "title": "High altitude passion",
+        "dimensions": "39.4 W x 27.6 H x 0.8 D in",
+        "price": "$1,850",
+        "medium": "Oil on Canvas",
+        "description": "This is the painting I made for the centennial of the Italian Air Force...",
+        "year": "2023",
+        "url": "https://www.saatchiart.com/art/Painting-High-altitude-passion/2284565/10875149/view"
+    },
+    {
+        "id": "7",
+        "title": "Ethereal Reverence",
+        "dimensions": "23.6 W x 23.6 H x 0.8 D in",
+        "price": "$2,810",
+        "medium": "Oil on Canvas",
+        "description": "This is one of my most introspective works and is one of my son's favorites. He has always told me he considers it an extremely relaxing painting, probably because of the dark tones and the sunset light that dominates the landscape...",
+        "year": "2022",
+        "url": "https://www.saatchiart.com/art/Painting-Ethereal-Reverence/2284565/10859161/view"
+    },
+    {
+        "id": "8",
+        "title": "Meditation",
+        "dimensions": "15.7 W x 11.8 H x 0.8 D in",
+        "price": "$868",
+        "medium": "Oil on Canvas",
+        "description": "The inspiration for this work flowed from the depths of my soul, ignited by the eternal beauty of Michelangelo's David. Standing before this masterpiece, I was struck by the timeless elegance and profound grace emanating from the statue...",
+        "year": "2017",
+        "url": "https://www.saatchiart.com/art/Painting-Meditation/2284565/10875150/view"
+    },
+    {
+        "id": "9",
+        "title": "Seasonal Freshness",
+        "dimensions": "11.8 W x 11.8 H x 0.7 D in",
+        "price": "$1,868",
+        "medium": "Oil on Canvas",
+        "description": "This painting is the culmination of my experiments with photorealistic painting. Fruit is always a fascinating subject, and the nuances of the cherries convey a sense of calm and serenity to anyone who sees them...",
+        "year": "2021",
+        "url": "https://www.saatchiart.com/art/Painting-Seasonal-Freshness/2284565/10875151/view"
+    },
+    {
+        "id": "10",
+        "title": "Warrior's Rest",
+        "medium": "Oil on Canvas",
+        "description": "This painting depicts a warrior finding solace after battle, symbolizing the quest for inner peace following life's challenges.",
+        "year": "2022"
+    },
+    {
+        "id": "11",
+        "title": "Between the Lines",
+        "medium": "Oil on Canvas",
+        "description": "An exploration of the nuances between spoken words and unspoken thoughts, encouraging viewers to look beyond the surface.",
+        "year": "2025"
+    },
+    {
+        "id": "12",
+        "title": "Citrus",
+        "medium": "Oil on Canvas",
+        "description": "A vibrant composition capturing the zest and freshness of citrus fruits, evoking feelings of vitality and rejuvenation.",
+        "year": "2020"
+    },
+    {
+        "id": "13",
+        "title": "Caring Eye",
+        "medium": "Oil on Canvas",
+        "description": "Focusing on the expressive power of a compassionate gaze, this piece highlights the importance of empathy and human connection.",
+        "year": "2015"
+    },
+    {
+        "id": "14",
+        "title": "The Phoenix",
+        "medium": "Oil on Canvas",
+        "description": "Drawing inspiration from the mythical bird, this artwork represents rebirth and hope, illustrating a creature rising anew from its ashes.",
+        "year": "2024"
+    }
+]
