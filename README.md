@@ -1,69 +1,101 @@
-# Welcome to your Lovable project
+# Dark Canvas Gallery
 
-## Project info
+Un'esperienza immersiva nel mondo dell'arte contemporanea di Annibale Pace, realizzata con tecnologie moderne e un focus sulla performance e l'accessibilità.
 
-**URL**: https://lovable.dev/projects/0755037e-5d60-4534-a3f2-01126e0c14f7
+## 🎨 Il Progetto
 
-## How can I edit this code?
+Dark Canvas Gallery è una galleria d'arte digitale che presenta le opere di Annibale Pace, un artista contemporaneo italiano. Il sito è stato progettato per offrire un'esperienza fluida e coinvolgente, mantenendo al contempo un focus sulla qualità delle immagini e sulla performance.
 
-There are several ways of editing your application.
+### Caratteristiche Principali
 
-**Use Lovable**
+- 🖼️ Galleria d'arte interattiva con lazy loading delle immagini
+- 📱 Design responsive ottimizzato per tutti i dispositivi
+- 🔍 Sistema di filtro per le opere d'arte
+- 📝 Form di contatto integrato con EmailJS
+- 🌐 SEO ottimizzato con meta tag e sitemap
+- 📊 Integrazione con Google Analytics
+- 🎯 Performance ottimizzata con lazy loading e code splitting
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0755037e-5d60-4534-a3f2-01126e0c14f7) and start prompting.
+## 🛠️ Stack Tecnologico
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Framework**: React + TypeScript
+- **Styling**: Tailwind CSS + Shadcn/ui
+- **Build Tool**: Vite
+- **Form Handling**: EmailJS
+- **Analytics**: Google Analytics
+- **Deployment**: Netlify
+- **Version Control**: Git + GitHub
 
-**Use your preferred IDE**
+## 🚀 Performance
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Il sito è stato ottimizzato per garantire:
+- Caricamento rapido delle immagini con lazy loading
+- Code splitting per ridurre il bundle size
+- Caching efficiente delle risorse statiche
+- Ottimizzazione delle immagini per il web
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🔒 Sicurezza
 
-Follow these steps:
+- Protezione CSRF per il form di contatto
+- Headers di sicurezza configurati
+- Rate limiting implementato
+- Gestione sicura delle variabili d'ambiente
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🌐 SEO
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- Meta tag ottimizzati
+- Sitemap dinamica
+- Schema markup per le opere d'arte
+- URL semantici e SEO-friendly
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🚀 Come Iniziare
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+1. Clona il repository:
+   ```bash
+   git clone https://github.com/IvanAP-TA/darkcanvas-gallery.git
+   ```
+
+2. Installa le dipendenze:
+   ```bash
+   npm install
+   ```
+
+3. Crea il file `.env` basandoti su `.env.example`:
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Avvia il server di sviluppo:
+   ```bash
+   npm run dev
+   ```
+
+## 📦 Build per Produzione
+
+```bash
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+## 🔧 Configurazione
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Il progetto utilizza variabili d'ambiente per le configurazioni sensibili. Crea un file `.env` con le seguenti variabili:
 
-**Use GitHub Codespaces**
+```env
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+VITE_SITE_URL=https://annibalepace.com
+VITE_GA_MEASUREMENT_ID=your_ga_id
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📝 Licenza
 
-## What technologies are used for this project?
+Questo progetto è privato e tutti i diritti sono riservati.
 
-This project is built with .
+## 👥 Contributi
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Per contribuire al progetto, contatta il proprietario del repository.
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/0755037e-5d60-4534-a3f2-01126e0c14f7) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+Realizzato con ❤️ per Annibale Pace
