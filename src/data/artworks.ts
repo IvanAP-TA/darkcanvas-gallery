@@ -20,7 +20,7 @@ export const artworks: Artwork[] = [
     theme: "Mythology",
     dimensions: "19.7 W x 15.7 H x 0.8 D in",
     description: "This artwork is a testament to the powerful influence of nature and mythology on my creative journey. Inspired by the tumultuous beauty of stormy seas and the timeless tales of ancient gods, this painting seeks to transport viewers to a world where the elements of the natural world merge with the realm of mythology.",
-    imageUrl: "/paintings/2.jpg",
+    imageUrl: "/paintings/2.JPG",
     saatchiUrl: "https://www.saatchiart.com/art/Painting-Zeus-s-Wrath/2284565/10875145/view"
   },
   {
