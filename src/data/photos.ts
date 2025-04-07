@@ -78,11 +78,5 @@ export const photos: Photo[] = [
     title: "Work Environment",
     imageUrl: "/paintings/IMG_7122.jpg",
     description: "The creative order of the atelier, where every object has its precise meaning"
-  },
-  {
-    id: "img_7131",
-    title: "Artwork Coming to Life",
-    imageUrl: "/paintings/artwork_studio.jpg",
-    description: "The moment when the canvas begins to reveal the essence of the artist's vision"
   }
 ]; 
