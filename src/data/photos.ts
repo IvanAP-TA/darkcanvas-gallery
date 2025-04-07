@@ -82,7 +82,7 @@ export const photos: Photo[] = [
   {
     id: "img_7131",
     title: "Artwork Coming to Life",
-    imageUrl: "/paintings/IMG_7131.jpg?v=1",
+    imageUrl: "/paintings/IMG_7131.JPG",
     description: "The moment when the canvas begins to reveal the essence of the artist's vision"
   }
 ]; 
