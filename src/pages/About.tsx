@@ -110,7 +110,7 @@ export default function About() {
                 <li className="leading-relaxed">Mesagnesi, Mesagne (BR), 2023</li>
                 <li className="leading-relaxed">A Carnevale ogni scherzo vale, Francavilla Fontana (BR), 2023</li>
                 <li className="leading-relaxed">Chi può esser lieto sia, Mesagne (BR), 2023</li>
-                <li className="leading-relaxed">L'abbraccio delle donne, Villa Castelli (TA), 2023</li>
+                <li className="leading-relaxed">L'abbraccio delle donne, Villa Castelli (BR), 2023</li>
                 <li className="leading-relaxed">Mostra d'arte per il centenario dell'aeronautica Militare, Francavilla Fontana (BR), 2023</li>
               </ul>
             </div>

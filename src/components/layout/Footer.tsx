@@ -1,21 +1,20 @@
-
 import { Link } from "react-router-dom";
+import { currentYear } from "@/lib/utils";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  
   return (
-    <footer className="py-12 bg-black mt-16">
+    <footer className="bg-black py-16 mt-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {/* Colonna 1: About */}
           <div>
             <h3 className="text-xl font-serif mb-4">Annibale Pace</h3>
-            <p className="text-muted-foreground">
-              Contemporary artist exploring the boundaries between form, color, and emotion
-              through various media and techniques.
+            <p className="text-muted-foreground leading-relaxed">
+              Contemporary artist exploring the boundaries between form, color, and emotion through various media and techniques.
             </p>
           </div>
           
+          {/* Colonna 2: Navigation */}
           <div>
             <h3 className="text-xl font-serif mb-4">Navigation</h3>
             <ul className="space-y-2">
@@ -42,19 +41,47 @@ const Footer = () => {
             </ul>
           </div>
           
+          {/* Colonna 3: Contact & Social */}
           <div>
             <h3 className="text-xl font-serif mb-4">Contact</h3>
-            <p className="text-muted-foreground mb-2">annibalepaceart@gmail.com</p>
-            <p className="text-muted-foreground">+39 339 1319362</p>
-            <div className="flex space-x-4 mt-4">
-              <a href="https://www.instagram.com/annibalepaceart/" className="text-muted-foreground hover:text-foreground transition-colors">
-                Instagram
+            <div className="space-y-2 mb-6">
+              <p className="text-muted-foreground flex items-center">
+                <span className="block">annibalepaceart@gmail.com</span>
+              </p>
+              <p className="text-muted-foreground flex items-center">
+                <span className="block">+39 339 1319362</span>
+              </p>
+            </div>
+            
+            <h4 className="text-lg font-serif mb-3">Follow Me</h4>
+            <div className="flex space-x-6">
+              <a 
+                href="https://www.facebook.com/annibale.pace" 
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Facebook"
+              >
+                <img src="/facebook-svgrepo-com.svg" alt="" className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.instagram.com/annibalepaceart/" 
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Instagram"
+              >
+                <img src="/instagram-svgrepo-com.svg" alt="" className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.etsy.com/shop/AnnibaleArtworks?ref=dashboard-header" 
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Etsy"
+              >
+                <img src="/etsy-svgrepo-com.svg" alt="" className="w-5 h-5" />
               </a>
             </div>
           </div>
         </div>
         
-        <div className="border-t border-muted/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        {/* Footer Bottom */}
+        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
             © {currentYear} Annibale Pace. All rights reserved.
           </p>
