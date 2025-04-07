@@ -3,86 +3,86 @@ import { Photo } from "@/types/photo";
 export const photos: Photo[] = [
   {
     id: "artist",
-    title: "Annibale Pace",
+    title: "The Artist",
     imageUrl: "/paintings/artist.jpg",
-    description: "Portrait of the artist in his studio"
+    description: "Annibale Pace in his studio, where emotions and visions become art"
   },
   {
     id: "mg_6406",
-    title: "Details",
+    title: "In Detail",
     imageUrl: "/paintings/_MG_6406.jpg",
-    description: "Details that tell stories"
+    description: "Perfection hidden in small details, each brushstroke tells a story"
   },
   {
     id: "mg_6414",
-    title: "Technique",
+    title: "Technical Mastery",
     imageUrl: "/paintings/_MG_6414.jpg",
-    description: "The mastery of artistic gesture"
+    description: "The artistic gesture that merges technical precision with emotional expression"
   },
   {
     id: "mg_6416",
-    title: "Focus",
+    title: "Concentration",
     imageUrl: "/paintings/_MG_6416.jpg",
-    description: "Total immersion in the creative process"
+    description: "Immersed in the creative process, where every decision influences the final work"
   },
   {
     id: "mg_6428",
-    title: "Atelier",
+    title: "The Studio",
     imageUrl: "/paintings/_MG_6428.jpg",
-    description: "The beating heart of creativity"
+    description: "The atelier: a place of inspiration, experimentation and continuous creation"
   },
   {
     id: "mg_6432",
-    title: "Work in Progress",
+    title: "Birth of a Painting",
     imageUrl: "/paintings/_MG_6432.jpg",
-    description: "The evolution of a work of art"
+    description: "The dialogue between artist and canvas evolves constantly until completion"
   },
   {
     id: "mg_6446",
-    title: "Dedication",
+    title: "Passion and Dedication",
     imageUrl: "/paintings/_MG_6446.jpg",
-    description: "The passion that guides every stroke"
+    description: "Hours of meticulous work guided by the love for art and beauty"
   },
   {
     id: "mg_6450",
     title: "Artistic Vision",
     imageUrl: "/paintings/_MG_6450.JPG",
-    description: "The artist's unique perspective on reality"
+    description: "The eye that transforms the ordinary into extraordinary through artistic sensibility"
   },
   {
     id: "mg_6467",
-    title: "Studio",
+    title: "Creative Space",
     imageUrl: "/paintings/_MG_6467.jpg",
-    description: "The place where ideas take shape"
+    description: "Among canvases, colors and brushes: the environment where ideas become reality"
   },
   {
     id: "mg_4202",
-    title: "Inspiration",
+    title: "Art in Progress",
     imageUrl: "/paintings/_MG_4202.jpg",
-    description: "The moment of artistic revelation"
+    description: "The artistic process captured at the moment of its highest intensity"
   },
   {
     id: "mg_4203",
-    title: "Creative Process",
+    title: "Artistic Expression",
     imageUrl: "/paintings/_MG_4203.jpg",
-    description: "The magic of artistic creation"
+    description: "The hand that gives form to thoughts, transforming color into pure emotion"
   },
   {
     id: "img_7113",
-    title: "Atelier",
+    title: "Tools of the Trade",
     imageUrl: "/paintings/IMG_7113.jpg",
-    description: "The sacred space of creativity"
+    description: "The materials and tools the artist masters to bring his visions to life"
   },
   {
     id: "img_7122",
-    title: "Creative Space",
+    title: "Work Environment",
     imageUrl: "/paintings/IMG_7122.jpg",
-    description: "The environment where creativity flourishes"
+    description: "The creative order of the atelier, where every object has its precise meaning"
   },
   {
     id: "img_7131",
-    title: "Work",
+    title: "Artwork Coming to Life",
     imageUrl: "/paintings/IMG_7131.jpg",
-    description: "Passion transformed into art"
+    description: "The moment when the canvas begins to reveal the essence of the artist's vision"
   }
 ]; 
