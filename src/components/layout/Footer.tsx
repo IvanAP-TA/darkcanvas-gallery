@@ -59,6 +59,8 @@ const Footer = () => {
                 href="https://www.facebook.com/annibale.pace" 
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <img src="/facebook-svgrepo-com.svg" alt="" className="w-5 h-5" />
               </a>
@@ -66,6 +68,8 @@ const Footer = () => {
                 href="https://www.instagram.com/annibalepaceart/" 
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <img src="/instagram-svgrepo-com.svg" alt="" className="w-5 h-5" />
               </a>
@@ -73,6 +77,8 @@ const Footer = () => {
                 href="https://www.etsy.com/shop/AnnibaleArtworks?ref=dashboard-header" 
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Etsy"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <img src="/etsy-svgrepo-com.svg" alt="" className="w-5 h-5" />
               </a>
