@@ -23,7 +23,7 @@ Dark Canvas Gallery è una galleria d'arte digitale che presenta le opere di Ann
 - **Build Tool**: Vite
 - **Form Handling**: EmailJS
 - **Analytics**: Google Analytics
-- **Deployment**: Netlify
+- **Deployment**: Vercel
 - **Version Control**: Git + GitHub
 
 ## 🚀 Performance
