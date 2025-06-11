@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import LazyImage from "@/components/LazyImage";
+import { Helmet } from "react-helmet-async";
 
 export default function About() {
   return (
@@ -8,8 +9,30 @@ export default function About() {
       <SEO 
         title="About"
         description="Learn about Annibale Pace's artistic journey, influences, and creative process in contemporary art."
-        image="/paintings/artist.jpg"
+        image="/paintings/artist.webp"
       />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.annibalepace.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About",
+                "item": "https://www.annibalepace.com/about"
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
       
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
@@ -22,9 +45,11 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
             <div className="bg-muted rounded-lg overflow-hidden">
               <img
-                src="/paintings/artist.jpg"
+                src="/paintings/artist.webp"
                 alt="Annibale Pace - Artist Portrait"
                 className="w-full h-full object-cover"
+                width={600}
+                height={750}
               />
             </div>
             

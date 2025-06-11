@@ -59,3 +59,4 @@ dist-ssr
 .temp
 *.tmp
 *~
+public/paintings/_jpg_unused/

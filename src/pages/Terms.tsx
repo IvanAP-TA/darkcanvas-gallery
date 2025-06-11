@@ -7,7 +7,7 @@ export default function Terms() {
       <SEO 
         title="Terms of Service"
         description="Terms and conditions for using Annibale Pace's online gallery - Information on copyright and usage conditions."
-        image="/paintings/1.jpg"
+        image="/paintings/1.webp"
       />
       
       <div className="container mx-auto px-4 py-12">
@@ -99,4 +99,4 @@ export default function Terms() {
       </div>
     </Layout>
   );
-} 
+}

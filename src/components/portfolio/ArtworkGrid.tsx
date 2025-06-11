@@ -157,6 +157,8 @@ export default function ArtworkGrid({ artworks }: ArtworkGridProps) {
                   alt={artwork.title}
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  width={600}
+                  height={800}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
                   <h3 className="text-lg font-serif text-white">{artwork.title}</h3>

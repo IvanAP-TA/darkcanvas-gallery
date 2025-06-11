@@ -82,6 +82,15 @@ const Footer = () => {
               >
                 <img src="/etsy-svgrepo-com.svg" alt="" className="w-5 h-5" />
               </a>
+              <a 
+                href="https://www.saatchiart.com/en-it/account/profile/2284565" 
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Saatchi Art"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/saatchi-art.webp" alt="" className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>

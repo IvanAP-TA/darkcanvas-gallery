@@ -7,7 +7,7 @@ export default function Privacy() {
       <SEO 
         title="Privacy Policy"
         description="Privacy Policy of Annibale Pace's online gallery - Information on the collection and use of personal data."
-        image="/paintings/1.jpg"
+        image="/paintings/1.webp"
       />
       
       <div className="container mx-auto px-4 py-12">
@@ -91,4 +91,4 @@ export default function Privacy() {
       </div>
     </Layout>
   );
-} 
+}

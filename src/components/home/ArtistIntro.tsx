@@ -37,9 +37,11 @@ const ArtistIntro = () => {
           >
             <div className="aspect-[4/5] relative overflow-hidden">
               <img 
-                src="/paintings/artist.jpg" 
+                src="/paintings/artist.webp" 
                 alt="Annibale Pace" 
                 className="w-full h-full object-cover"
+                width={600}
+                height={750}
               />
             </div>
           </div>

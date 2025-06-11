@@ -8,7 +8,7 @@ export default function Contact() {
       <SEO 
         title="Contact"
         description="Get in touch with Annibale Pace for inquiries about artworks, exhibitions, and collaborations."
-        image="/contact-hero.jpg"
+        image="/paintings/9.webp"
       />
       
       <ContactForm />

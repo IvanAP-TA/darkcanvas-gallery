@@ -47,7 +47,6 @@ export default function ContactForm() {
       )
       .then(
         (result) => {
-          console.log('SUCCESS!', result.text);
           setStatus('success');
           if (form.current) {
             form.current.reset();
@@ -58,7 +57,6 @@ export default function ContactForm() {
           }
         },
         (error) => {
-          console.log('FAILED...', error.text);
           setStatus('error');
         },
       );

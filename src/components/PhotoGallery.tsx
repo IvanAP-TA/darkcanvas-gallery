@@ -16,11 +16,12 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
             key={photo.id}
             className="relative aspect-square group cursor-pointer overflow-hidden"
             onClick={() => setSelectedPhoto(photo.id)}
-          >
-            <img
+          >            <img
               src={photo.imageUrl}
               alt={photo.title}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              width={600}
+              height={600}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-start p-4">
               <h3 className="text-white text-lg font-serif">
@@ -43,11 +44,12 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
             >
               ×
             </button>
-            <div className="relative aspect-auto max-h-[80vh]">
-              <img
+            <div className="relative aspect-auto max-h-[80vh]">              <img
                 src={photos.find(p => p.id === selectedPhoto)?.imageUrl || ''}
                 alt={photos.find(p => p.id === selectedPhoto)?.title || ''}
                 className="w-full h-full object-contain"
+                width={1200}
+                height={900}
               />
             </div>
             <div className="mt-4 text-center">

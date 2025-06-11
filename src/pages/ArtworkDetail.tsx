@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import LazyImage from "@/components/LazyImage";
 import { artworks } from "@/data/artworks";
 import { ArrowLeft } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 export default function ArtworkDetail() {
   const { id } = useParams();
@@ -39,6 +40,67 @@ export default function ArtworkDetail() {
         image={artwork.imageUrl}
       />
       
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.annibalepace.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Portfolio",
+                "item": "https://www.annibalepace.com/portfolio"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": artwork.title,
+                "item": `https://www.annibalepace.com/portfolio/${artwork.id}`
+              }
+            ]
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "VisualArtwork",
+            "name": artwork.title,
+            "creator": {
+              "@type": "Person",
+              "@id": "https://www.annibalepace.com/#person",
+              "name": "Annibale Pace"
+            },
+            "description": artwork.description,
+            "image": `https://www.annibalepace.com${artwork.imageUrl}`,
+            "dateCreated": artwork.year,
+            "artMedium": artwork.technique,
+            "width": {
+              "@type": "Distance",
+              "name": artwork.dimensions.split(" x ")[0]
+            },
+            "height": {
+              "@type": "Distance",
+              "name": artwork.dimensions.split(" x ")[1]
+            },
+            "artworkSurface": "Canvas",
+            "genre": artwork.theme,
+            "url": `https://www.annibalepace.com/portfolio/${artwork.id}`,
+            "offers": {
+              "@type": "Offer",
+              "availability": "https://schema.org/InStock",
+              "url": artwork.saatchiUrl || "https://www.annibalepace.com/contact"
+            }
+          })}
+        </script>
+      </Helmet>
+
       <div className="container mx-auto px-4 py-12">
         <Link 
           to="/portfolio" 
