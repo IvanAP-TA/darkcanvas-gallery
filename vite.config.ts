@@ -20,8 +20,27 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
+    outDir: 'build',
+    emptyOutDir: true,
+    target: 'es2015',
+    cssCodeSplit: true,
+    sourcemap: false,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
     rollupOptions: {
-      external: [],
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-navigation-menu'],
+          analytics: ['@vercel/analytics/react'],
+        },
+      },
     },
   },
   optimizeDeps: {

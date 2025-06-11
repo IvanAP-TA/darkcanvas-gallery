@@ -1,0 +1,32 @@
+{
+  "name": "Annibale Pace - Contemporary Artist",
+  "short_name": "Annibale Pace",
+  "description": "The official portfolio of contemporary artist Annibale Pace, featuring paintings and mixed media works.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#0f0f0f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/paintings/artist-thumb.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "/paintings/artist.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ],
+  "categories": ["art", "gallery", "portfolio"],
+  "lang": "en",
+  "scope": "/",
+  "prefer_related_applications": false
+}

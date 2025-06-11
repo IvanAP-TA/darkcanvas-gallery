@@ -5,27 +5,31 @@ import LazyImage from "@/components/LazyImage";
 import { artworks } from "@/data/artworks";
 import { ArrowLeft } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { useI18n, getArtworkTranslations } from "@/lib/i18n";
 
 export default function ArtworkDetail() {
   const { id } = useParams();
   const artwork = artworks.find((a) => a.id === id);
-
+  const { t, language } = useI18n();
+  
+  // Get translated artwork content
+  const translatedArtwork = artwork ? getArtworkTranslations(artwork.id, language) : null;
   if (!artwork) {
     return (
       <Layout>
         <SEO 
-          title="Artwork Not Found"
-          description="The artwork you're looking for doesn't exist or has been moved."
+          title={t('artwork.notFound')}
+          description={t('artwork.notFoundText')}
         />
         <div className="container mx-auto px-4 py-20 text-center">
-          <h1 className="text-3xl font-serif mb-6">Artwork Not Found</h1>
-          <p className="mb-8">The artwork you're looking for doesn't exist or has been moved.</p>
+          <h1 className="text-3xl font-serif mb-6">{t('artwork.notFound')}</h1>
+          <p className="mb-8">{t('artwork.notFoundText')}</p>
           <Link 
             to="/portfolio" 
             className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background font-medium transition-colors hover:bg-foreground/90"
           >
             <ArrowLeft className="w-4 h-4" />
-            Return to Portfolio
+            {t('artwork.returnToPortfolio')}
           </Link>
         </div>
       </Layout>
@@ -101,13 +105,12 @@ export default function ArtworkDetail() {
         </script>
       </Helmet>
 
-      <div className="container mx-auto px-4 py-12">
-        <Link 
+      <div className="container mx-auto px-4 py-12">        <Link 
           to="/portfolio" 
           className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Portfolio
+          {t('artwork.backToPortfolio')}
         </Link>
 
         <div className="max-w-6xl mx-auto">
@@ -119,37 +122,34 @@ export default function ArtworkDetail() {
                 className="w-full h-auto rounded-lg"
               />
             </div>
-            
-            <div className="space-y-6">
-              <h1 className="text-4xl font-serif">{artwork.title}</h1>
-              <p className="text-muted-foreground">{artwork.description}</p>
-              
-              <div className="space-y-4">
+              <div className="space-y-6">
+              <h1 className="text-4xl font-serif">{translatedArtwork?.title || artwork.title}</h1>
+              <p className="text-muted-foreground">{translatedArtwork?.description || artwork.description}</p><div className="space-y-4">
                 <p>
-                  <span className="font-medium">Year:</span> {artwork.year}
+                  <span className="font-medium">{t('artwork.year')}:</span> {artwork.year}
                 </p>
                 <p>
-                  <span className="font-medium">Technique:</span> {artwork.technique}
+                  <span className="font-medium">{t('artwork.technique')}:</span> {t(`technique.${artwork.technique}`) || artwork.technique}
                 </p>
                 <p>
-                  <span className="font-medium">Theme:</span> {artwork.theme}
+                  <span className="font-medium">{t('artwork.theme')}:</span> {t(`theme.${artwork.theme}`) || artwork.theme}
                 </p>
                 <p>
-                  <span className="font-medium">Dimensions:</span> {artwork.dimensions}
+                  <span className="font-medium">{t('artwork.dimensions')}:</span> {artwork.dimensions}
                 </p>
               </div>
               
               <div className="mt-auto">
-                <h3 className="text-lg font-serif mb-3">Inquire about this artwork</h3>
+                <h3 className="text-lg font-serif mb-3">{t('artwork.inquire')}</h3>
                 <p className="text-muted-foreground mb-4">
-                  Interested in acquiring this piece or learning more about it? Contact us for availability and pricing details.
+                  {t('artwork.inquireText')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link 
                     to="/contact" 
                     className="inline-block px-6 py-3 bg-foreground text-background font-medium transition-colors hover:bg-foreground/90"
                   >
-                    Contact Gallery
+                    {t('artwork.contactGallery')}
                   </Link>
                   {artwork.saatchiUrl && (
                     <a
@@ -163,7 +163,7 @@ export default function ArtworkDetail() {
                         alt="Saatchi Art Logo"
                         className="h-7 w-auto my-auto"
                       />
-                      <span className="opacity-90 text-base">View on Saatchi Art</span>
+                      <span className="opacity-90 text-base">{t('artwork.viewOnSaatchi')}</span>
                     </a>
                   )}
                 </div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ArtworkCard from "../artwork/ArtworkCard";
 import { Artwork } from "@/types/artwork";
+import { useI18n } from "@/lib/i18n";
 
 interface FeaturedArtworksProps {
   artworks: Artwork[];
@@ -9,6 +10,7 @@ interface FeaturedArtworksProps {
 
 const FeaturedArtworks = ({ artworks }: FeaturedArtworksProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useI18n();
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,10 +44,9 @@ const FeaturedArtworks = ({ artworks }: FeaturedArtworksProps) => {
           className={`transition-all duration-1000 transform ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
-        >
-          <h2 className="text-3xl md:text-4xl font-serif mb-2">Featured Works</h2>
+        >          <h2 className="text-3xl md:text-4xl font-serif mb-2">{t('home.featured')}</h2>
           <p className="text-muted-foreground mb-10 max-w-2xl">
-            A selection of recent and significant works from the artist's portfolio that showcase the depth and breadth of his artistic vision.
+            {t('home.featured.description')}
           </p>
         </div>
         
@@ -63,12 +64,11 @@ const FeaturedArtworks = ({ artworks }: FeaturedArtworksProps) => {
           className={`text-center mt-12 transition-all duration-1000 delay-500 transform ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
-        >
-          <Link 
+        >          <Link 
             to="/portfolio" 
             className="inline-block px-8 py-3 border border-foreground text-foreground font-medium text-lg transition-colors hover:bg-foreground/10"
           >
-            View All Works
+            {t('home.featured.viewAll')}
           </Link>
         </div>
       </div>

@@ -3,13 +3,16 @@ import SEO from "@/components/SEO";
 import { artworks } from "@/data/artworks";
 import ArtworkGrid from "@/components/portfolio/ArtworkGrid";
 import { Helmet } from "react-helmet-async";
+import { useI18n } from "@/lib/i18n";
 
 export default function Portfolio() {
+  const { t } = useI18n();
+  
   return (
     <Layout>
       <SEO 
-        title="Portfolio"
-        description="Explore the complete collection of Annibale Pace's artworks, including paintings, sculptures, and mixed media pieces."
+        title={t('seo.portfolio.title')}
+        description={t('seo.portfolio.description')}
         image="/paintings/9.webp"
       />
       <Helmet>
@@ -21,24 +24,23 @@ export default function Portfolio() {
               {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Home",
+                "name": t('nav.home'),
                 "item": "https://www.annibalepace.com/"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Portfolio",
+                "name": t('nav.portfolio'),
                 "item": "https://www.annibalepace.com/portfolio"
               }
             ]
           })}
         </script>
       </Helmet>
-      
-      <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl md:text-5xl font-serif mb-3">Portfolio</h1>
+        <div className="container mx-auto px-4 py-12">
+        <h1 className="text-4xl md:text-5xl font-serif mb-3">{t('portfolio.title')}</h1>
         <p className="text-muted-foreground text-lg mb-10">
-          A comprehensive collection of my works, showcasing the evolution of my artistic journey.
+          {t('seo.portfolio.description')}
         </p>
         
         <ArtworkGrid artworks={artworks} />

@@ -1,6 +1,44 @@
-# Allow all web crawlers
+# Robots.txt for Annibale Pace Art Gallery
+# Website: https://www.annibalepace.com
+
+# Allow all web crawlers to index the site
 User-agent: *
 Allow: /
 
-# Sitemap location
+# Allow specific crawlers for better art discovery
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Disallow admin or private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Disallow technical files that shouldn't be indexed
+Disallow: *.json$
+Disallow: *.css$
+Disallow: *.js$
+Disallow: /assets/
+Disallow: /build/
+
+# Allow artwork images to be indexed (important for art galleries!)
+Allow: /paintings/
+Allow: *.webp$
+Allow: *.jpg$
+Allow: *.jpeg$
+Allow: *.png$
+
+# Crawl-delay for respectful crawling (1 second)
+Crawl-delay: 1
+
+# Sitemap locations
 Sitemap: https://www.annibalepace.com/sitemap.xml

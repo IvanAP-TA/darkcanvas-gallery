@@ -2,13 +2,16 @@ import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import LazyImage from "@/components/LazyImage";
 import { Helmet } from "react-helmet-async";
+import { useI18n } from "@/lib/i18n";
 
 export default function About() {
+  const { t } = useI18n();
+  
   return (
     <Layout>
       <SEO 
-        title="About"
-        description="Learn about Annibale Pace's artistic journey, influences, and creative process in contemporary art."
+        title={t('seo.about.title')}
+        description={t('seo.about.description')}
         image="/paintings/artist.webp"
       />
       <Helmet>
@@ -20,25 +23,24 @@ export default function About() {
               {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Home",
+                "name": t('nav.home'),
                 "item": "https://www.annibalepace.com/"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "About",
+                "name": t('nav.about'),
                 "item": "https://www.annibalepace.com/about"
               }
             ]
           })}
         </script>
       </Helmet>
-      
-      <div className="container mx-auto px-4 py-12">
+        <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-serif mb-3">About</h1>
+          <h1 className="text-4xl md:text-5xl font-serif mb-3">{t('about.title')}</h1>
           <p className="text-muted-foreground text-lg mb-10">
-            Discover the story behind my artistic journey and creative process.
+            {t('about.subtitle')}
           </p>
           
           {/* Bio Section with Image */}
@@ -52,48 +54,37 @@ export default function About() {
                 height={750}
               />
             </div>
-            
-            <div className="space-y-5">
-              <h2 className="text-2xl font-serif border-b pb-3 mb-2">About Annibale Pace</h2>
+              <div className="space-y-5">
+              <h2 className="text-2xl font-serif border-b pb-3 mb-2">{t('about.artist.title')}</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Born in Grottaglie in 1963, Annibale Pace's artistic journey began with his passion for art nurtured since youth. 
-                His formal training started under Maestra Antonella Micocci, where he learned the fundamentals of artistic interpretation.
+                {t('about.artist.bio1')}
               </p>
               
               <p className="text-muted-foreground leading-relaxed">
-                His artistic evolution continued through apprenticeships with Maestro Paolo Tagliaferro, where he developed his hyperrealistic technique, 
-                and later with Maestro E. G. Solferino at the Artistic Center "La Casaccia." Today, his work combines technical precision with contemporary 
-                artistic sensibilities, creating pieces that bridge tradition and innovation.
+                {t('about.artist.bio2')}
               </p>
             </div>
-          </div>
-
-          {/* Artistic Approach Section */}
+          </div>          {/* Artistic Approach Section */}
           <div className="mb-16">
-            <h2 className="text-2xl font-serif border-b pb-3 mb-6">Artistic Approach</h2>
+            <h2 className="text-2xl font-serif border-b pb-3 mb-6">{t('about.approach')}</h2>
             <div className="space-y-5 text-muted-foreground">
               <p className="leading-relaxed">
-                My artistic journey is driven by a deep exploration of form, color, and emotion. 
-                Through various media and techniques, I seek to create works that resonate with 
-                viewers on both an intellectual and emotional level.
+                {t('about.approach.text1')}
               </p>
               
               <p className="leading-relaxed">
-                Each piece is a reflection of my ongoing dialogue with contemporary art, 
-                drawing inspiration from both classical traditions and modern innovations.
+                {t('about.approach.text2')}
               </p>
               
               <p className="leading-relaxed">
-                Based in Taranto, Italy, my studio serves as a laboratory for artistic 
-                experimentation and creative expression.
+                {t('about.approach.text3')}
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Education Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">            {/* Education Section */}
             <div className="mb-16 md:mb-0">
-              <h2 className="text-2xl font-serif border-b pb-3 mb-6">Education</h2>
+              <h2 className="text-2xl font-serif border-b pb-3 mb-6">{t('about.education.title')}</h2>
               <ul className="space-y-4 text-muted-foreground list-disc pl-5">
                 <li className="leading-relaxed">Maestra Antonella Micocci - Fundamentals of artistic interpretation</li>
                 <li className="leading-relaxed">Maestro Paolo Tagliaferro - Hyperrealistic technique</li>
@@ -104,18 +95,16 @@ export default function About() {
 
             {/* Events Section */}
             <div>
-              <h2 className="text-2xl font-serif border-b pb-3 mb-6">Notable Events</h2>
+              <h2 className="text-2xl font-serif border-b pb-3 mb-6">{t('about.events.title')}</h2>
               <ul className="space-y-4 text-muted-foreground list-disc pl-5">
                 <li className="leading-relaxed">Carousell Du Louvre, Louvre, Parigi, 2013</li>
                 <li className="leading-relaxed">Premio Nazionale di Pittura, Grottaglie, 2015</li>
                 <li className="leading-relaxed">100 Artisti per l'EXPO (EXPO 2015, Milano), Bergamo, 2015</li>
               </ul>
             </div>
-          </div>
-
-          {/* Exhibitions Section */}
+          </div>          {/* Exhibitions Section */}
           <div className="mt-16">
-            <h2 className="text-2xl font-serif border-b pb-3 mb-6">Exhibitions</h2>
+            <h2 className="text-2xl font-serif border-b pb-3 mb-6">{t('about.exhibitions.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3">
               <ul className="text-muted-foreground list-disc pl-5">
                 <li className="leading-relaxed">Carousell Du Louvre, Louvre, Parigi, 2013</li>

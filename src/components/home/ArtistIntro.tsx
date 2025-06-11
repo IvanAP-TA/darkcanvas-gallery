@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useI18n } from "@/lib/i18n";
 
 const ArtistIntro = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useI18n();
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -50,19 +52,18 @@ const ArtistIntro = () => {
             className={`transition-all duration-1000 delay-300 transform ${
               isVisible ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
             }`}
-          >
-            <h2 className="text-3xl md:text-4xl font-serif mb-6">About Annibale Pace</h2>
+          >            <h2 className="text-3xl md:text-4xl font-serif mb-6">{t('home.intro.title')}</h2>
             <p className="text-lg mb-4 text-muted-foreground">
-              Born in Grottaglie in 1963, Annibale Pace's artistic journey began with his passion for art nurtured since youth. His formal training started under Maestra Antonella Micocci, where he learned the fundamentals of artistic interpretation.
+              {t('home.intro.bio1')}
             </p>
             <p className="text-lg mb-6 text-muted-foreground">
-              His artistic evolution continued through apprenticeships with Maestro Paolo Tagliaferro, where he developed his hyperrealistic technique, and later with Maestro E. G. Solferino at the Artistic Center "La Casaccia." Today, his work combines technical precision with contemporary artistic sensibilities, creating pieces that bridge tradition and innovation.
+              {t('home.intro.bio2')}
             </p>
             <Link 
               to="/about" 
               className="inline-block px-6 py-2 border border-foreground text-foreground font-medium transition-colors hover:bg-foreground/10"
             >
-              Read Full Biography
+              {t('home.intro.readMore')}
             </Link>
           </div>
         </div>

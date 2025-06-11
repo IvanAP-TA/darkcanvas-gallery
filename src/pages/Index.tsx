@@ -5,13 +5,16 @@ import FeaturedArtworks from "@/components/home/FeaturedArtworks";
 import ArtistIntro from "@/components/home/ArtistIntro";
 import { artworks } from "@/data/artworks";
 import { Helmet } from "react-helmet-async";
+import { useI18n } from "@/lib/i18n";
 
 export default function Index() {
+  const { t } = useI18n();
+  
   return (
     <Layout>
       <SEO 
-        title="Annibale Pace - Artista Contemporaneo"
-        description="Sito ufficiale di Annibale Pace, artista contemporaneo italiano. Scopri opere, biografia, portfolio, mostre e contatti. Pittura ad olio, arte figurativa e contemporanea da Taranto, Puglia."
+        title={t('seo.home.title')}
+        description={t('seo.home.description')}
         image="/paintings/9.webp"
         url="https://www.annibalepace.com/"
       />
@@ -32,7 +35,7 @@ export default function Index() {
         </script>
       </Helmet>
       <main>
-        <h1 className="sr-only">Annibale Pace - Artista Contemporaneo</h1>
+        <h1 className="sr-only">{t('seo.home.title')}</h1>
         <Hero />
         <FeaturedArtworks artworks={artworks} />
         <ArtistIntro />
