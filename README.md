@@ -2,7 +2,7 @@
 
 Un'esperienza immersiva nel mondo dell'arte contemporanea di Annibale Pace, realizzata con tecnologie moderne e un focus sulla performance e l'accessibilità.
 
-<!-- Deploy trigger: 2025-06-14 - Fixed modulepreload issue -->
+<!-- Deploy trigger: 2025-06-14 - Final fix deployment -->
 
 ## 🎨 Il Progetto
 
