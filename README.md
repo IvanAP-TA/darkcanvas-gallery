@@ -2,6 +2,8 @@
 
 Un'esperienza immersiva nel mondo dell'arte contemporanea di Annibale Pace, realizzata con tecnologie moderne e un focus sulla performance e l'accessibilità.
 
+<!-- Deploy trigger: 2025-06-14 -->
+
 ## 🎨 Il Progetto
 
 Una galleria d'arte digitale che presenta le opere di Annibale Pace, un artista contemporaneo italiano. Il sito è stato progettato per offrire un'esperienza fluida e coinvolgente, mantenendo al contempo un focus sulla qualità delle immagini e sulla performance.
