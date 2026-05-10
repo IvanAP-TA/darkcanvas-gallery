@@ -3,11 +3,12 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error("Missing Supabase environment variables");
-}
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Create Supabase client only if environment variables are available
+// If not, create a dummy client that will fail gracefully
+export const supabase = 
+  supabaseUrl && supabaseAnonKey
+    ? createClient(supabaseUrl, supabaseAnonKey)
+    : null;
 
 // Types per le operazioni
 export interface ArtworkDB {
@@ -26,6 +27,10 @@ export interface ArtworkDB {
 
 // Funzioni per gestire i quadri
 export async function fetchArtworks() {
+  if (!supabase) {
+    throw new Error("Supabase not configured");
+  }
+  
   const { data, error } = await supabase
     .from("artworks")
     .select("*")
@@ -36,6 +41,10 @@ export async function fetchArtworks() {
 }
 
 export async function createArtwork(artwork: Omit<ArtworkDB, "id" | "created_at" | "updated_at">) {
+  if (!supabase) {
+    throw new Error("Supabase not configured");
+  }
+  
   const { data, error } = await supabase
     .from("artworks")
     .insert([artwork])
@@ -46,6 +55,10 @@ export async function createArtwork(artwork: Omit<ArtworkDB, "id" | "created_at"
 }
 
 export async function updateArtwork(id: string, artwork: Partial<ArtworkDB>) {
+  if (!supabase) {
+    throw new Error("Supabase not configured");
+  }
+  
   const { data, error } = await supabase
     .from("artworks")
     .update(artwork)
@@ -57,6 +70,10 @@ export async function updateArtwork(id: string, artwork: Partial<ArtworkDB>) {
 }
 
 export async function deleteArtwork(id: string) {
+  if (!supabase) {
+    throw new Error("Supabase not configured");
+  }
+  
   const { error } = await supabase
     .from("artworks")
     .delete()
@@ -67,6 +84,10 @@ export async function deleteArtwork(id: string) {
 
 // Upload immagini
 export async function uploadArtworkImage(file: File) {
+  if (!supabase) {
+    throw new Error("Supabase not configured");
+  }
+  
   const fileExt = file.name.split(".").pop();
   const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
   const filePath = `paintings/${fileName}`;
