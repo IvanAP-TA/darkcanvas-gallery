@@ -38,10 +38,9 @@
         "description": "Creating this artwork was an exploration of the surreal and enigmatic, inspired by the works of Giorgio De Chirico. It's one of my first forays into the realm of metaphysical art, a style that has always fascinated me for its ability to evoke a sense of mystery and intrigue...",
         "year": "2020",
         "url": "https://www.saatchiart.com/art/Painting-Reminiscence/2284565/10875147/view"
-    },
-    {
+    },    {
         "id": "5",
-        "title": "Wine, grapes, sea",
+        "title": "Wine, Grapes, Sea",
         "dimensions": "31.5 W x 23.6 H x 0.8 D in",
         "price": "$4,400",
         "medium": "Oil on Canvas",
@@ -51,7 +50,7 @@
     },
     {
         "id": "6",
-        "title": "High altitude passion",
+        "title": "High Altitude Passion",
         "dimensions": "39.4 W x 27.6 H x 0.8 D in",
         "price": "$1,850",
         "medium": "Oil on Canvas",

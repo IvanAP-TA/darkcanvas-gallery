@@ -10,15 +10,16 @@ const Hero = () => {
   useEffect(() => {
     setLoaded(true);
   }, []);
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Critical LCP image with highest priority */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/60 z-10"></div>
         <img
-          src="/paintings/9.webp"
+          src="/paintings/9-thumb.webp"
           srcSet="/paintings/9-thumb.webp 600w, /paintings/9.webp 1200w"
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1920px"
           alt="Annibale Pace Contemporary Artwork - Hero Image"
           width={1200}
           height={800}
@@ -49,7 +50,8 @@ const Hero = () => {
         <p className="text-lg xs:text-xl sm:text-xl md:text-2xl mb-6 sm:mb-8 max-w-xl font-light leading-relaxed">
           {t('home.hero.description')}
         </p>
-          {/* Mobile-optimized button layout */}
+        
+        {/* Mobile-optimized button layout */}
         <div className="flex flex-col xs:flex-col sm:flex-row gap-3 sm:gap-4 max-w-lg sm:max-w-none">
           <Link 
             to="/portfolio" 
@@ -79,7 +81,9 @@ const Hero = () => {
             />
             <span className="truncate">Saatchi Art</span>
           </a>
-        </div>        {/* Social Follow Section - Prominent but elegant */}
+        </div>
+        
+        {/* Social Follow Section - Prominent but elegant */}
         <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-foreground/20 max-w-2xl">
           <p className="text-sm sm:text-base text-foreground/80 mb-4 font-medium tracking-wider">
             {t('home.followJourney').toUpperCase()}

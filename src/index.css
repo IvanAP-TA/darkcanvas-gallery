@@ -1,4 +1,3 @@
-
 /* Removed external font import to improve loading performance */
 
 @tailwind base;
@@ -60,14 +59,15 @@
   * {
     @apply border-border;
   }
-  
-  html, body {
+    html, body {
     @apply bg-background text-foreground antialiased;
     scroll-behavior: smooth;
     /* Enable GPU acceleration for better performance */
     transform: translateZ(0);
     backface-visibility: hidden;
     perspective: 1000px;
+    /* Prevent horizontal overflow */
+    overflow-x: hidden;
   }
   
   /* Improve performance for animations */
@@ -150,10 +150,28 @@
   /* Touch improvements */
   .touch-manipulation {
     touch-action: manipulation;
-  }
-  
-  /* Mobile menu animations */
+  }    /* Mobile menu animations */
   @media (max-width: 767px) {
+    /* Prevent horizontal scrolling on mobile */
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* Ensure mobile menu is properly hidden */
+    .mobile-menu-hidden {
+      transform: translateX(100%) !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+    
+    .mobile-menu-visible {
+      transform: translateX(0) !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+    
     .mobile-menu-enter {
       transform: translateX(100%);
     }
@@ -171,6 +189,20 @@
       transform: translateX(100%);
       transition: transform 300ms ease-in-out;
     }
+  }
+  
+  /* Mobile menu body lock */
+  .mobile-menu-open {
+    position: fixed !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+
+  /* Ensure no horizontal overflow on any element when mobile menu is open */
+  .mobile-menu-open * {
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 }
 

@@ -37,13 +37,15 @@ const ArtistIntro = () => {
               isVisible ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
             }`}
           >
-            <div className="aspect-[4/5] relative overflow-hidden">
-              <img 
+            <div className="aspect-[4/5] relative overflow-hidden">              <img 
                 src="/paintings/artist.webp" 
+                srcSet="/paintings/artist-thumb.webp 400w, /paintings/artist.webp 800w"
+                sizes="(max-width: 768px) 100vw, 400px"
                 alt="Annibale Pace" 
                 className="w-full h-full object-cover"
-                width={600}
-                height={750}
+                width={400}
+                height={500}
+                loading="lazy"
               />
             </div>
           </div>

@@ -11,7 +11,7 @@ interface SEOProps {
 export default function SEO({ title, description, image, url }: SEOProps) {
   const { language } = useI18n();
   const siteUrl = url || 'https://www.annibalepace.com';
-  const defaultImage = image || '/paintings/artist.webp';
+  const defaultImage = image || 'https://www.annibalepace.com/og-image.svg';
   const fullTitle = `${title} | Annibale Pace - Contemporary Artist`;
 
   // Localized content based on language

@@ -30,9 +30,11 @@ const FeaturedArtworks = ({ artworks }: FeaturedArtworksProps) => {
       if (element) observer.unobserve(element);
     };
   }, []);
-
-  // Get only the first 3 artworks for the featured section
-  const featuredArtworks = artworks.slice(0, 3);
+  // Get specific featured artworks as requested
+  const featuredArtworkIds = ['11', '17', '5']; // Whispers of Firelight Painting, Spirit of the Savannah, Wine grapes sea
+  const featuredArtworks = featuredArtworkIds.map(id => 
+    artworks.find(artwork => artwork.id === id)
+  ).filter(Boolean); // Remove any undefined values
 
   return (
     <section 

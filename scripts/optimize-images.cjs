@@ -2,21 +2,22 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-// Configuration for image optimization
+// Configuration for image optimization - Ultra aggressive for PageSpeed
 const OPTIMIZATION_CONFIG = {
   webp: {
-    quality: 85,
+    quality: 80, // Further reduced
     effort: 6,
+    method: 6, // Best compression
   },
   thumb: {
-    width: 400,
-    height: 533,
-    quality: 75,
+    width: 250,  // Even smaller for faster LCP
+    height: 333, // Maintain aspect ratio
+    quality: 60, // More aggressive compression
   },
   full: {
-    width: 800,
-    height: 1067,
-    quality: 85,
+    width: 500,  // Smaller for better Core Web Vitals
+    height: 667, // Maintain aspect ratio
+    quality: 70, // More aggressive compression
   }
 };
 
@@ -34,11 +35,15 @@ async function optimizeImage(inputPath, outputPath, options) {
         position: 'center'
       });
     }
-    
-    await pipeline
+      await pipeline
       .webp({
         quality: options.quality,
-        effort: OPTIMIZATION_CONFIG.webp.effort
+        effort: OPTIMIZATION_CONFIG.webp.effort,
+        method: OPTIMIZATION_CONFIG.webp.method,
+        alphaQuality: 0, // Remove alpha channel if not needed
+        nearLossless: false,
+        smartSubsample: true,
+        preset: 'photo'
       })
       .toFile(outputPath);
       
@@ -78,11 +83,11 @@ async function generateResponsiveImages() {
 }
 
 // Performance monitoring functions
-function generateImagePreloadList() {
-  const criticalImages = [
+function generateImagePreloadList() {  const criticalImages = [
     '/paintings/9.webp', // Hero image
-    '/paintings/1.webp', // First portfolio image
-    '/paintings/3.webp', // Second portfolio image
+    '/paintings/11.webp', // Whispers of Firelight Painting - Featured artwork 1
+    '/paintings/17.webp', // Spirit of the Savannah - Featured artwork 2
+    '/paintings/5.webp', // Wine, Grapes, Sea - Featured artwork 3
     '/saatchi-art.webp', // Logo
   ];
   

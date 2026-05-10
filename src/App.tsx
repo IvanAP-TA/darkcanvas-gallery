@@ -10,16 +10,28 @@ import { lazy, Suspense } from "react";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 import ErrorBoundary from "./components/ErrorBoundary";
 
-// Lazy load components for better code splitting
+// Lazy load components for better code splitting with preloading
 const Index = lazy(() => import("./pages/Index"));
 const Portfolio = lazy(() => import("./pages/Portfolio"));
 const ArtworkDetail = lazy(() => import("./pages/ArtworkDetail"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Admin = lazy(() => import("./pages/Admin"));
+
+// Less critical pages - loaded only when needed
 const PhotoGalleryPage = lazy(() => import("./pages/PhotoGallery"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
+
+// Preload critical components after initial load
+if (typeof window !== 'undefined') {
+  // Preload Portfolio after 2 seconds for better UX
+  setTimeout(() => {
+    import("./pages/Portfolio");
+    import("./pages/About");
+  }, 2000);
+}
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -57,6 +69,7 @@ const App = () => (
                   <Route path="/gallery" element={<PhotoGalleryPage />} />
                   <Route path="/privacy" element={<Privacy />} />
                   <Route path="/terms" element={<Terms />} />
+                  <Route path="/admin" element={<Admin />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>          </BrowserRouter>

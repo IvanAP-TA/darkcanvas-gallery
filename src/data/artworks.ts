@@ -1,6 +1,58 @@
 import { Artwork } from "@/types/artwork";
+import { fetchArtworks as fetchArtworksFromSupabase } from "@/lib/supabase";
 
-export const artworks: Artwork[] = [
+let cachedArtworks: Artwork[] | null = null;
+let isLoading = false;
+
+export async function fetchArtworks(): Promise<Artwork[]> {
+  // Return cached data if available
+  if (cachedArtworks) {
+    return cachedArtworks;
+  }
+
+  // Prevent multiple simultaneous requests
+  if (isLoading) {
+    return new Promise((resolve) => {
+      const checkCache = setInterval(() => {
+        if (cachedArtworks) {
+          clearInterval(checkCache);
+          resolve(cachedArtworks);
+        }
+      }, 100);
+    });
+  }
+
+  isLoading = true;
+
+  try {
+    const data = await fetchArtworksFromSupabase();
+    
+    // Map database fields to component fields
+    cachedArtworks = data.map((art: any) => ({
+      id: art.id,
+      title: art.title,
+      year: art.year,
+      technique: art.technique,
+      theme: art.theme,
+      dimensions: art.dimensions,
+      description: art.description,
+      imageUrl: art.image_url,
+      detailImages: art.detail_images || [],
+      saatchiUrl: art.saatchi_url,
+    }));
+
+    return cachedArtworks;
+  } catch (error) {
+    console.error("Error fetching artworks from Supabase:", error);
+    // Return empty array if Supabase is not configured
+    return [];
+  } finally {
+    isLoading = false;
+  }
+}
+
+// Fallback data for when Supabase is not available
+export const fallbackArtworks: Artwork[] = [
   {
     id: "1",
     title: "Happiness",
@@ -44,10 +96,9 @@ export const artworks: Artwork[] = [
     description: "Creating this artwork was an exploration of the surreal and enigmatic, inspired by the works of Giorgio De Chirico. It's one of my first forays into the realm of metaphysical art, a style that has always fascinated me for its ability to evoke a sense of mystery and intrigue.",
     imageUrl: "/paintings/4.webp",
     saatchiUrl: "https://www.saatchiart.com/art/Painting-Reminiscence/2284565/10875147/view"
-  },
-  {
+  },  {
     id: "5",
-    title: "Wine, grapes, sea",
+    title: "Wine, Grapes, Sea",
     year: 2021,
     technique: "Oil on Canvas",
     theme: "Photorealism",
@@ -55,10 +106,9 @@ export const artworks: Artwork[] = [
     description: "This painting is a testament to mastery in photorealistic painting. With details so sharp and lifelike that they seem to emerge from the canvas, it captures the beauty and essence of a serene and fulfilling moment.",
     imageUrl: "/paintings/5.webp",
     saatchiUrl: "https://www.saatchiart.com/art/Painting-Wine-grapes-sea/2284565/10875148/view"
-  },
-  {
+  },  {
     id: "6",
-    title: "High altitude passion",
+    title: "High Altitude Passion",
     year: 2023,
     technique: "Oil on Canvas",
     theme: "Aviation",
@@ -202,16 +252,19 @@ export const artworks: Artwork[] = [
 ];
 
 // Funzione per ordinare i quadri per anno
-export const getArtworksByYear = () => {
+export const getArtworksByYear = async () => {
+  const artworks = await fetchArtworks();
   return [...artworks].sort((a, b) => b.year - a.year);
 };
 
 // Funzione per ottenere i quadri di un anno specifico
-export const getArtworksByYearValue = (year: number) => {
+export const getArtworksByYearValue = async (year: number) => {
+  const artworks = await fetchArtworks();
   return artworks.filter(artwork => artwork.year === year);
 };
 
 // Funzione per ottenere tutti gli anni disponibili
-export const getAvailableYears = () => {
+export const getAvailableYears = async () => {
+  const artworks = await fetchArtworks();
   return [...new Set(artworks.map(artwork => artwork.year))].sort((a, b) => b - a);
 };

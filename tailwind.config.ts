@@ -8,8 +8,18 @@ export default {
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
 		"./src/**/*.{ts,tsx}",
+		"./index.html",
 	],
-	prefix: "",	theme: {
+	prefix: "",
+	safelist: [
+		// Keep essential animations and transitions
+		'animate-fade-in',
+		'animate-pulse',
+		'mobile-menu-enter',
+		'mobile-menu-enter-active',
+		'mobile-menu-exit',
+		'mobile-menu-exit-active',
+	],theme: {
 		container: {
 			center: true,
 			padding: {

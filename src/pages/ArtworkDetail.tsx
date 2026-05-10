@@ -1,19 +1,57 @@
 import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import LazyImage from "@/components/LazyImage";
-import { artworks } from "@/data/artworks";
+import { fetchArtworks, fallbackArtworks } from "@/data/artworks";
 import { ArrowLeft } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { useI18n, getArtworkTranslations } from "@/lib/i18n";
+import { Artwork } from "@/types/artwork";
 
 export default function ArtworkDetail() {
   const { id } = useParams();
-  const artwork = artworks.find((a) => a.id === id);
+  const [artwork, setArtwork] = useState<Artwork | null>(null);
+  const [loading, setLoading] = useState(true);
   const { t, language } = useI18n();
+  
+  useEffect(() => {
+    const loadArtwork = async () => {
+      try {
+        const data = await fetchArtworks();
+        const found = data.find((a) => a.id === id);
+        if (!found) {
+          // Fallback to fallback artworks if not found
+          const fallback = fallbackArtworks.find((a) => a.id === id);
+          setArtwork(fallback || null);
+        } else {
+          setArtwork(found);
+        }
+      } catch (error) {
+        console.error("Error loading artwork:", error);
+        const fallback = fallbackArtworks.find((a) => a.id === id);
+        setArtwork(fallback || null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadArtwork();
+  }, [id]);
   
   // Get translated artwork content
   const translatedArtwork = artwork ? getArtworkTranslations(artwork.id, language) : null;
+  
+  if (loading) {
+    return (
+      <Layout>
+        <div className="container mx-auto px-4 py-20 text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-foreground mx-auto"></div>
+        </div>
+      </Layout>
+    );
+  }
+  
   if (!artwork) {
     return (
       <Layout>

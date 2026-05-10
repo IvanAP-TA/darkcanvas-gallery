@@ -3,12 +3,33 @@ import SEO from "@/components/SEO";
 import Hero from "@/components/home/Hero";
 import FeaturedArtworks from "@/components/home/FeaturedArtworks";
 import ArtistIntro from "@/components/home/ArtistIntro";
-import { artworks } from "@/data/artworks";
+import { fetchArtworks, fallbackArtworks } from "@/data/artworks";
 import { Helmet } from "react-helmet-async";
 import { useI18n } from "@/lib/i18n";
+import { useState, useEffect } from "react";
+import { Artwork } from "@/types/artwork";
 
 export default function Index() {
   const { t } = useI18n();
+  const [artworks, setArtworks] = useState<Artwork[]>(fallbackArtworks);
+
+  useEffect(() => {
+    const loadArtworks = async () => {
+      try {
+        const data = await fetchArtworks();
+        if (data.length > 0) {
+          setArtworks(data);
+        } else {
+          setArtworks(fallbackArtworks);
+        }
+      } catch (error) {
+        console.error("Error loading artworks:", error);
+        setArtworks(fallbackArtworks);
+      }
+    };
+
+    loadArtworks();
+  }, []);
   
   return (
     <Layout>
