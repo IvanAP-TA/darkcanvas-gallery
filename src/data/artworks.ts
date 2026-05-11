@@ -5,6 +5,11 @@ let cachedArtworks: Artwork[] | null = null;
 let isLoading = false;
 
 export async function fetchArtworks(): Promise<Artwork[]> {
+  // TEMPORARILY DISABLED - Testing if site loads without Supabase
+  console.log("Supabase fetch disabled for testing");
+  return fallbackArtworks;
+  
+  /* Original code - will re-enable after testing
   // Return cached data if available
   if (cachedArtworks) {
     return cachedArtworks;
@@ -49,6 +54,7 @@ export async function fetchArtworks(): Promise<Artwork[]> {
   } finally {
     isLoading = false;
   }
+  */
 }
 
 // Fallback data for when Supabase is not available
