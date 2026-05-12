@@ -53,9 +53,10 @@ export default defineConfig(({ mode }) => ({
     },
     rollupOptions: {
       output: {
-        entryFileNames: 'assets/main-[hash].js',
-        manualChunks: {
-          // Everything goes into main
+        entryFileNames: 'assets/[name]-[hash].js',
+        manualChunks: (id) => {
+          // Force everything into main bundle
+          return null;
         },
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]',
