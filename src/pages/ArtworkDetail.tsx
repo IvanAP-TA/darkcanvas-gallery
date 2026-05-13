@@ -1,9 +1,13 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import SEO from "@/components/SEO";
 import LazyImage from "@/components/LazyImage";
-import { fetchArtworks, fallbackArtworks } from "@/data/artworks";
+import {
+  fetchArtworks,
+  fallbackArtworks,
+  LEGACY_ID_TO_SLUG,
+} from "@/data/artworks";
 import { ArrowLeft } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { useI18n, getArtworkTranslations } from "@/lib/i18n";
@@ -14,14 +18,19 @@ export default function ArtworkDetail() {
   const [artwork, setArtwork] = useState<Artwork | null>(null);
   const [loading, setLoading] = useState(true);
   const { t, language } = useI18n();
-  
+
+  // Legacy redirect: /portfolio/1 → /portfolio/happiness, etc.
+  const legacyTarget = id && LEGACY_ID_TO_SLUG[id];
+
   useEffect(() => {
+    if (legacyTarget) return; // skip fetching, we are about to redirect
     const loadArtwork = async () => {
       try {
         const data = await fetchArtworks();
-        const found = data.find((a) => a.id === id);
+        const found =
+          data.find((a) => a.id === id) ||
+          data.find((a) => a.slug === id);
         if (!found) {
-          // Fallback to fallback artworks if not found
           const fallback = fallbackArtworks.find((a) => a.id === id);
           setArtwork(fallback || null);
         } else {
@@ -37,10 +46,18 @@ export default function ArtworkDetail() {
     };
 
     loadArtwork();
-  }, [id]);
-  
-  // Get translated artwork content
+  }, [id, legacyTarget]);
+
+  if (legacyTarget) {
+    return <Navigate to={`/portfolio/${legacyTarget}`} replace />;
+  }
+
+  // Localized description: prefer CMS jsonb, then i18n translations file, then base text.
+  const cmsDesc = artwork?.descriptions?.[language as "en" | "it" | "es" | "zh"];
   const translatedArtwork = artwork ? getArtworkTranslations(artwork.id, language) : null;
+  const displayDescription =
+    cmsDesc || translatedArtwork?.description || artwork?.description || "";
+  const displayTitle = translatedArtwork?.title || artwork?.title || "";
   
   if (loading) {
     return (
@@ -161,8 +178,9 @@ export default function ArtworkDetail() {
               />
             </div>
               <div className="space-y-6">
-              <h1 className="text-4xl font-serif">{translatedArtwork?.title || artwork.title}</h1>
-              <p className="text-muted-foreground">{translatedArtwork?.description || artwork.description}</p><div className="space-y-4">
+              <h1 className="text-4xl font-serif">{displayTitle}</h1>
+              <p className="text-muted-foreground whitespace-pre-line">{displayDescription}</p>
+              <div className="space-y-4">
                 <p>
                   <span className="font-medium">{t('artwork.year')}:</span> {artwork.year}
                 </p>
@@ -197,8 +215,11 @@ export default function ArtworkDetail() {
                       className="inline-flex items-center justify-center gap-3 px-6 py-3 border border-white text-white hover:bg-white/10 transition-colors"
                     >
                       <img 
-                        src="/saatchi-art.webp"
+                        src="/saatchi-art-80.webp"
                         alt="Saatchi Art Logo"
+                        width={28}
+                        height={28}
+                        loading="lazy"
                         className="h-7 w-auto my-auto"
                       />
                       <span className="opacity-90 text-base">{t('artwork.viewOnSaatchi')}</span>

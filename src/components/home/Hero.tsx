@@ -18,11 +18,11 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/60 z-10"></div>
         <img
           src="/paintings/9-thumb.webp"
-          srcSet="/paintings/9-thumb.webp 600w, /paintings/9.webp 1200w"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1920px"
+          srcSet="/paintings/9-thumb.webp 600w, /paintings/9-1600.webp 1600w"
+          sizes="(max-width: 768px) 100vw, 1600px"
           alt="Annibale Pace Contemporary Artwork - Hero Image"
-          width={1200}
-          height={800}
+          width={1600}
+          height={1066}
           className="w-full h-full object-cover"
           loading="eager"
           fetchPriority="high"
@@ -72,8 +72,8 @@ const Hero = () => {
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-3 border border-foreground text-foreground font-medium text-base sm:text-lg transition-colors hover:bg-foreground/10 touch-manipulation min-h-[48px]"
           >
             <img 
-              src="/saatchi-art.webp" 
-              alt="Saatchi Art Logo" 
+              src="/saatchi-art-80.webp"
+              alt="Saatchi Art Logo"
               width={20}
               height={20}
               className="h-5 sm:h-6 w-auto flex-shrink-0"

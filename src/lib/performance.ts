@@ -50,10 +50,9 @@ export const preloadCriticalResources = () => {
     return;
   }
 
-  const criticalResources = [
-    { href: '/paintings/9.webp', as: 'image' },
-    { href: '/saatchi-art.webp', as: 'image' },
-  ];
+  // Hero image preload is handled by index.html with imagesrcset.
+  // Only preload truly secondary critical resources here.
+  const criticalResources: Array<{ href: string; as: string }> = [];
 
   criticalResources.forEach(({ href, as }) => {
     try {

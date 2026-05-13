@@ -30,11 +30,14 @@ const FeaturedArtworks = ({ artworks }: FeaturedArtworksProps) => {
       if (element) observer.unobserve(element);
     };
   }, []);
-  // Get specific featured artworks as requested
-  const featuredArtworkIds = ['11', '17', '5']; // Whispers of Firelight Painting, Spirit of the Savannah, Wine grapes sea
-  const featuredArtworks = featuredArtworkIds.map(id => 
-    artworks.find(artwork => artwork.id === id)
-  ).filter(Boolean); // Remove any undefined values
+  // Prefer artworks flagged as `featured` in the CMS; fall back to a curated
+  // hardcoded list to keep the home page useful before any data is loaded.
+  const flagged = artworks.filter((a) => a.featured);
+  const featuredArtworks = (flagged.length > 0
+    ? flagged
+    : ['11', '17', '5']
+        .map((id) => artworks.find((a) => a.id === id))
+        .filter(Boolean) as typeof artworks).slice(0, 6);
 
   return (
     <section 

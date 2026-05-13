@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type Language = 'en' | 'it' | 'zh';
+type Language = 'en' | 'it' | 'zh' | 'es';
+export type { Language };
 
 interface I18nContextType {
   language: Language;
@@ -624,6 +625,159 @@ const translations = {
     'photo.desc.mg_4203': '赋予思想形式、将色彩转化为纯粹情感的手',
     'photo.desc.img_7113': '艺术家掌握的材料和工具，用以实现他的愿景',
     'photo.desc.img_7122': '工作室的创造性秩序，每个物品都有其精确的意义',
+  },
+  es: {
+    // Navigation
+    'nav.home': 'Inicio',
+    'nav.portfolio': 'Portafolio',
+    'nav.gallery': 'Galería',
+    'nav.about': 'Sobre mí',
+    'nav.contact': 'Contacto',
+
+    // Home
+    'home.title': 'Artista Contemporáneo',
+    'home.subtitle': 'Descubre el mundo artístico de Annibale Pace',
+    'home.hero.description': 'Explora el portafolio oficial de Annibale Pace: obras, biografía, exposiciones y contactos. Pintura al óleo, arte figurativo y contemporáneo desde Tarento, Apulia.',
+    'home.hero.viewPortfolio': 'Ver Portafolio',
+    'home.hero.aboutArtist': 'Sobre el Artista',
+    'home.featured': 'Obras Destacadas',
+    'home.featured.description': 'Una selección de obras recientes y significativas del portafolio del artista que muestran la profundidad y amplitud de su visión artística.',
+    'home.featured.viewAll': 'Ver Todas las Obras',
+    'home.followJourney': 'Sigue el viaje artístico',
+    'home.intro.title': 'Sobre el Artista',
+    'home.intro.text': 'Annibale Pace es un artista contemporáneo cuya obra explora la intersección entre tradición e innovación en el arte visual.',
+    'home.intro.bio1': 'Nacido en Grottaglie en 1963, el viaje artístico de Annibale Pace comenzó con su pasión por el arte cultivada desde la juventud. Su formación formal se inició bajo la Maestra Antonella Micocci, donde aprendió los fundamentos de la interpretación artística.',
+    'home.intro.bio2': 'Su evolución artística continuó a través de aprendizajes con el Maestro Paolo Tagliaferro, donde desarrolló su técnica hiperrealista, y posteriormente con el Maestro E. G. Solferino en el Centro Artístico "La Casaccia". Hoy, su obra combina precisión técnica con sensibilidad artística contemporánea, creando piezas que unen tradición e innovación.',
+    'home.intro.readMore': 'Leer la Biografía Completa',
+
+    // Portfolio
+    'portfolio.title': 'Portafolio',
+    'portfolio.subtitle': 'Explora el portafolio completo de obras contemporáneas de Annibale Pace.',
+    'portfolio.filter.all': 'Todos',
+    'portfolio.filter.technique': 'Técnica',
+    'portfolio.filter.theme': 'Tema',
+    'portfolio.filter.year': 'Año',
+    'portfolio.filter.by': 'Filtrar por',
+    'portfolio.filter.clearAll': 'Limpiar filtros',
+    'portfolio.noResults': 'No se encontraron obras que coincidan con tus criterios.',
+
+    // Artwork
+    'artwork.technique': 'Técnica',
+    'artwork.dimensions': 'Dimensiones',
+    'artwork.year': 'Año',
+    'artwork.theme': 'Tema',
+    'artwork.backToPortfolio': 'Volver al Portafolio',
+    'artwork.nextArtwork': 'Siguiente Obra',
+    'artwork.prevArtwork': 'Obra Anterior',
+    'artwork.inquire': 'Consultar sobre esta obra',
+    'artwork.inquireText': '¿Te interesa adquirir esta pieza o saber más? Contáctanos para disponibilidad y precios.',
+    'artwork.contactGallery': 'Contactar Galería',
+    'artwork.viewOnSaatchi': 'Ver en Saatchi Art',
+    'artwork.notFound': 'Obra No Encontrada',
+    'artwork.notFoundText': 'La obra que buscas no existe o ha sido movida.',
+    'artwork.returnToPortfolio': 'Volver al Portafolio',
+
+    // About Page
+    'about.title': 'Sobre mí',
+    'about.subtitle': 'Descubre la historia detrás de mi viaje artístico y proceso creativo.',
+    'about.biography': 'Biografía',
+    'about.approach': 'Enfoque Artístico',
+    'about.exhibitions': 'Exposiciones y Reconocimientos',
+    'about.artist.title': 'Sobre Annibale Pace',
+    'about.artist.bio1': 'Nacido en Grottaglie en 1963, el viaje artístico de Annibale Pace comenzó con su pasión por el arte cultivada desde la juventud. Su formación formal se inició bajo la Maestra Antonella Micocci, donde aprendió los fundamentos de la interpretación artística.',
+    'about.artist.bio2': 'Su evolución artística continuó a través de aprendizajes con el Maestro Paolo Tagliaferro, donde desarrolló su técnica hiperrealista, y posteriormente con el Maestro E. G. Solferino en el Centro Artístico "La Casaccia". Hoy, su obra combina precisión técnica con sensibilidad artística contemporánea, creando piezas que unen tradición e innovación.',
+    'about.approach.text1': 'Mi viaje artístico está impulsado por una profunda exploración de la forma, el color y la emoción. A través de diversos medios y técnicas, busco crear obras que resuenen con el espectador tanto a nivel intelectual como emocional.',
+    'about.approach.text2': 'Cada pieza es un reflejo de mi diálogo continuo con el arte contemporáneo, inspirándome tanto en las tradiciones clásicas como en las innovaciones modernas.',
+    'about.approach.text3': 'Con sede en Tarento, Italia, mi estudio sirve como laboratorio de experimentación artística y expresión creativa.',
+    'about.education.title': 'Formación',
+    'about.events.title': 'Eventos Destacados',
+    'about.exhibitions.title': 'Exposiciones',
+
+    // Contact Page
+    'contact.title': 'Contacto',
+    'contact.subtitle': 'Ponte en contacto con el artista',
+    'contact.info.title': 'Información',
+    'contact.info.studio': 'Ubicación del Estudio',
+    'contact.info.details': 'Datos de Contacto',
+    'contact.info.representation': 'Representación',
+    'contact.info.representationText': 'Para consultas de venta o exposiciones, contáctame en annibalepaceart@gmail.com',
+    'contact.form.title': 'Envía un Mensaje',
+    'contact.form.name': 'Nombre',
+    'contact.form.email': 'Email',
+    'contact.form.subject': 'Asunto',
+    'contact.form.selectSubject': 'Selecciona un asunto',
+    'contact.form.subjects.artwork': 'Consulta sobre Obra',
+    'contact.form.subjects.commission': 'Solicitud de Comisión',
+    'contact.form.subjects.exhibition': 'Oportunidad de Exposición',
+    'contact.form.subjects.press': 'Prensa/Medios',
+    'contact.form.subjects.other': 'Otro',
+    'contact.form.message': 'Mensaje',
+    'contact.form.send': 'Enviar Mensaje',
+    'contact.form.sending': 'Enviando...',
+    'contact.form.success': '¡Mensaje enviado con éxito!',
+    'contact.form.error': 'Error al enviar el mensaje. Inténtalo de nuevo.',
+
+    // Gallery
+    'gallery.title': 'Galería Fotográfica',
+    'gallery.subtitle': 'Detrás de cámaras y proceso artístico',
+    'photo.title': 'Galería',
+
+    // Footer
+    'footer.rights': 'Todos los derechos reservados.',
+    'footer.privacy': 'Política de Privacidad',
+    'footer.terms': 'Términos de Servicio',
+    'footer.navigation': 'Navegación',
+    'footer.contact': 'Contacto',
+    'footer.follow': 'Sígueme',
+    'footer.about': 'Artista contemporáneo que explora los límites entre forma, color y emoción a través de diversos medios y técnicas.',
+
+    // Techniques
+    'technique.oil': 'Óleo sobre Lienzo',
+    'technique.acrylic': 'Acrílico',
+    'technique.watercolor': 'Acuarela',
+    'technique.mixed': 'Técnica Mixta',
+    'technique.Oil on Canvas': 'Óleo sobre Lienzo',
+
+    // Themes
+    'theme.portrait': 'Retrato',
+    'theme.landscape': 'Paisaje',
+    'theme.abstract': 'Abstracto',
+    'theme.figurative': 'Figurativo',
+    'theme.still-life': 'Naturaleza Muerta',
+    'theme.Neapolitan Culture': 'Cultura Napolitana',
+    'theme.Mythology': 'Mitología',
+    'theme.Surrealism': 'Surrealismo',
+    'theme.Metaphysical Art': 'Arte Metafísico',
+    'theme.Landscape': 'Paisaje',
+    'theme.Portrait': 'Retrato',
+    'theme.Still Life': 'Naturaleza Muerta',
+    'theme.Photorealism': 'Fotorrealismo',
+    'theme.Aviation': 'Aviación',
+    'theme.Classical Art': 'Arte Clásico',
+    'theme.Figurative': 'Figurativo',
+    'theme.Portraiture': 'Retratística',
+
+    // Common
+    'common.loading': 'Cargando...',
+    'common.error': 'Error',
+    'common.retry': 'Reintentar',
+    'common.close': 'Cerrar',
+    'common.next': 'Siguiente',
+    'common.previous': 'Anterior',
+    'common.send': 'Enviar',
+    'common.viewMore': 'Ver más',
+
+    // SEO
+    'seo.home.title': 'Annibale Pace - Artista Contemporáneo',
+    'seo.home.description': 'Sitio oficial de Annibale Pace, artista contemporáneo. Pintura al óleo, arte figurativo y contemporáneo desde Tarento, Apulia.',
+    'seo.portfolio.title': 'Portafolio - Annibale Pace',
+    'seo.portfolio.description': 'Explora el portafolio completo de obras contemporáneas de Annibale Pace.',
+    'seo.about.title': 'Sobre mí - Annibale Pace',
+    'seo.about.description': 'Descubre el viaje artístico, las influencias y el proceso creativo de Annibale Pace.',
+    'seo.contact.title': 'Contacto - Annibale Pace',
+    'seo.contact.description': 'Ponte en contacto con el artista contemporáneo Annibale Pace.',
+    'seo.gallery.title': 'Galería - Annibale Pace',
+    'seo.gallery.description': 'Galería fotográfica que muestra el proceso artístico y entre bastidores.',
   }
 };
 
@@ -632,7 +786,7 @@ export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language') as Language;
-    if (savedLanguage && ['en', 'it', 'zh'].includes(savedLanguage)) {
+    if (savedLanguage && ['en', 'it', 'zh', 'es'].includes(savedLanguage)) {
       setLanguage(savedLanguage);
     }
   }, []);
@@ -643,12 +797,12 @@ export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const t = (key: string): string => {
-    const translation = translations[language][key];
-    if (!translation) {
-      console.warn(`Translation missing for key: ${key} in language: ${language}`);
-      return key;
-    }
-    return translation;
+    const dict = translations[language] as Record<string, string> | undefined;
+    const translation = dict?.[key];
+    if (translation) return translation;
+    // Graceful fallback to English so missing translations never break the UI
+    const fallback = translations.en[key];
+    return fallback ?? key;
   };
 
   return (

@@ -1,60 +1,99 @@
 import { Artwork } from "@/types/artwork";
-import { fetchArtworks as fetchArtworksFromSupabase } from "@/lib/supabase";
+import {
+  fetchArtworksDB,
+  isSupabaseConfigured,
+  type ArtworkDB,
+} from "@/lib/supabase";
 
 let cachedArtworks: Artwork[] | null = null;
-let isLoading = false;
+let inflight: Promise<Artwork[]> | null = null;
+
+/**
+ * Legacy numeric IDs ("1".."18" used by the old static data) → new slugs in
+ * the database. This lets old bookmarks like /portfolio/1 redirect to
+ * /portfolio/happiness instead of 404'ing.
+ */
+export const LEGACY_ID_TO_SLUG: Record<string, string> = {
+  "1": "happiness",
+  "2": "zeus-wrath",
+  "3": "homage-dali",
+  "4": "reminiscence",
+  "5": "wine-grapes-sea",
+  "6": "high-altitude-passion",
+  "7": "ethereal-reverence",
+  "8": "meditation",
+  "9": "seasonal-freshness",
+  "10": "warriors-rest",
+  "11": "whispers-firelight",
+  "12": "citrus",
+  "13": "caring-eye",
+  "14": "the-phoenix",
+  "15": "resonance-stars",
+  "16": "release",
+  "17": "spirit-savannah",
+  "18": "dunes-of-her",
+};
+
+/** Resolve any input (legacy numeric id or slug) to its canonical slug. */
+export function resolveArtworkId(input: string | undefined): string | undefined {
+  if (!input) return input;
+  return LEGACY_ID_TO_SLUG[input] ?? input;
+}
+
+function mapDB(art: any): Artwork {
+  const descriptions =
+    art.descriptions && typeof art.descriptions === "object"
+      ? (art.descriptions as Record<string, string>)
+      : undefined;
+  return {
+    id: art.slug || art.id,
+    slug: art.slug || undefined,
+    title: art.title,
+    year: art.year,
+    technique: art.technique,
+    theme: art.theme,
+    dimensions: art.dimensions,
+    description: art.description,
+    descriptions,
+    imageUrl: art.image_url,
+    detailImages: Array.isArray(art.detail_images) ? art.detail_images : [],
+    saatchiUrl: art.saatchi_url || undefined,
+    featured: !!art.featured,
+    sortOrder: art.sort_order,
+  };
+}
 
 export async function fetchArtworks(): Promise<Artwork[]> {
-  // TEMPORARILY DISABLED - Testing if site loads without Supabase
-  console.log("Supabase fetch disabled for testing");
-  return fallbackArtworks;
-  
-  /* Original code - will re-enable after testing
-  // Return cached data if available
-  if (cachedArtworks) {
+  if (cachedArtworks) return cachedArtworks;
+  if (inflight) return inflight;
+
+  if (!isSupabaseConfigured()) {
+    cachedArtworks = fallbackArtworks;
     return cachedArtworks;
   }
 
-  // Prevent multiple simultaneous requests
-  if (isLoading) {
-    return new Promise((resolve) => {
-      const checkCache = setInterval(() => {
-        if (cachedArtworks) {
-          clearInterval(checkCache);
-          resolve(cachedArtworks);
-        }
-      }, 100);
-    });
-  }
+  inflight = (async () => {
+    try {
+      const data = await fetchArtworksDB();
+      const mapped = data.map(mapDB);
+      cachedArtworks = mapped.length > 0 ? mapped : fallbackArtworks;
+      return cachedArtworks;
+    } catch (error) {
+      console.error("Error fetching artworks from Supabase:", error);
+      cachedArtworks = fallbackArtworks;
+      return cachedArtworks;
+    } finally {
+      inflight = null;
+    }
+  })();
 
-  isLoading = true;
+  return inflight;
+}
 
-  try {
-    const data = await fetchArtworksFromSupabase();
-    
-    // Map database fields to component fields
-    cachedArtworks = data.map((art: any) => ({
-      id: art.id,
-      title: art.title,
-      year: art.year,
-      technique: art.technique,
-      theme: art.theme,
-      dimensions: art.dimensions,
-      description: art.description,
-      imageUrl: art.image_url,
-      detailImages: art.detail_images || [],
-      saatchiUrl: art.saatchi_url,
-    }));
-
-    return cachedArtworks;
-  } catch (error) {
-    console.error("Error fetching artworks from Supabase:", error);
-    // Return empty array if Supabase is not configured
-    return [];
-  } finally {
-    isLoading = false;
-  }
-  */
+// Force a refetch (used after admin mutations)
+export function invalidateArtworksCache() {
+  cachedArtworks = null;
+  inflight = null;
 }
 
 // Fallback data for when Supabase is not available

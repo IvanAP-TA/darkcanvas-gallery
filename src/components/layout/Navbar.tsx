@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import SocialLinksComponent from "@/components/ui/SocialLinks";
+import Flag from "@/components/ui/Flag";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,25 +67,37 @@ const Navbar = () => {
           <div className="flex space-x-2 ml-4">
             <button
               onClick={() => setLanguage('en')}
-              className={`text-lg hover:scale-110 transition-transform touch-manipulation min-h-[40px] min-w-[40px] flex items-center justify-center ${language === 'en' ? 'opacity-100' : 'opacity-60'}`}
+              className={`hover:scale-110 transition-transform touch-manipulation min-h-[40px] min-w-[40px] flex items-center justify-center ${language === 'en' ? 'opacity-100' : 'opacity-60'}`}
               title="English"
+              aria-label="English"
             >
-              🇺🇸
+              <Flag code="en" size={22} />
             </button>
             <button
               onClick={() => setLanguage('it')}
-              className={`text-lg hover:scale-110 transition-transform touch-manipulation min-h-[40px] min-w-[40px] flex items-center justify-center ${language === 'it' ? 'opacity-100' : 'opacity-60'}`}
+              className={`hover:scale-110 transition-transform touch-manipulation min-h-[40px] min-w-[40px] flex items-center justify-center ${language === 'it' ? 'opacity-100' : 'opacity-60'}`}
               title="Italiano"
+              aria-label="Italiano"
             >
-              🇮🇹
+              <Flag code="it" size={22} />
+            </button>
+            <button
+              onClick={() => setLanguage('es')}
+              className={`hover:scale-110 transition-transform touch-manipulation min-h-[40px] min-w-[40px] flex items-center justify-center ${language === 'es' ? 'opacity-100' : 'opacity-60'}`}
+              title="Español"
+              aria-label="Español"
+            >
+              <Flag code="es" size={22} />
             </button>
             <button
               onClick={() => setLanguage('zh')}
-              className={`text-lg hover:scale-110 transition-transform touch-manipulation min-h-[40px] min-w-[40px] flex items-center justify-center ${language === 'zh' ? 'opacity-100' : 'opacity-60'}`}
+              className={`hover:scale-110 transition-transform touch-manipulation min-h-[40px] min-w-[40px] flex items-center justify-center ${language === 'zh' ? 'opacity-100' : 'opacity-60'}`}
               title="中文"
+              aria-label="中文"
             >
-              🇨🇳
-            </button>          </div>
+              <Flag code="zh" size={22} />
+            </button>
+          </div>
         </nav></div>
 
       {/* Mobile menu overlay - only visible on mobile when menu is open */}
@@ -151,27 +164,38 @@ const Navbar = () => {
             {t('nav.contact')}
           </Link>
             {/* Mobile Language Switcher */}
-          <div className="flex space-x-6 pt-6 border-t border-muted/20">
+          <div className="flex flex-wrap gap-4 pt-6 border-t border-muted/20">
             <button
               onClick={() => {setLanguage('en'); setIsOpen(false);}}
-              className={`text-2xl hover:scale-110 transition-transform touch-manipulation min-h-[48px] min-w-[48px] flex items-center justify-center ${language === 'en' ? 'opacity-100' : 'opacity-60'}`}
+              className={`hover:scale-110 transition-transform touch-manipulation min-h-[48px] min-w-[48px] flex items-center justify-center ${language === 'en' ? 'opacity-100' : 'opacity-60'}`}
               title="English"
+              aria-label="English"
             >
-              🇺🇸
+              <Flag code="en" size={32} />
             </button>
             <button
               onClick={() => {setLanguage('it'); setIsOpen(false);}}
-              className={`text-2xl hover:scale-110 transition-transform touch-manipulation min-h-[48px] min-w-[48px] flex items-center justify-center ${language === 'it' ? 'opacity-100' : 'opacity-60'}`}
+              className={`hover:scale-110 transition-transform touch-manipulation min-h-[48px] min-w-[48px] flex items-center justify-center ${language === 'it' ? 'opacity-100' : 'opacity-60'}`}
               title="Italiano"
+              aria-label="Italiano"
             >
-              🇮🇹
+              <Flag code="it" size={32} />
+            </button>
+            <button
+              onClick={() => {setLanguage('es'); setIsOpen(false);}}
+              className={`hover:scale-110 transition-transform touch-manipulation min-h-[48px] min-w-[48px] flex items-center justify-center ${language === 'es' ? 'opacity-100' : 'opacity-60'}`}
+              title="Español"
+              aria-label="Español"
+            >
+              <Flag code="es" size={32} />
             </button>
             <button
               onClick={() => {setLanguage('zh'); setIsOpen(false);}}
-              className={`text-2xl hover:scale-110 transition-transform touch-manipulation min-h-[48px] min-w-[48px] flex items-center justify-center ${language === 'zh' ? 'opacity-100' : 'opacity-60'}`}
+              className={`hover:scale-110 transition-transform touch-manipulation min-h-[48px] min-w-[48px] flex items-center justify-center ${language === 'zh' ? 'opacity-100' : 'opacity-60'}`}
               title="中文"
+              aria-label="中文"
             >
-              🇨🇳
+              <Flag code="zh" size={32} />
             </button>
           </div>          {/* Mobile Social Links */}
           <div className="pt-6 border-t border-muted/20">

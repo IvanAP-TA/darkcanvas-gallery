@@ -1,38 +1,38 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Artwork } from "@/types/artwork";
-import {
-  createArtwork,
-  updateArtwork,
-  deleteArtwork,
-  uploadArtworkImage,
-  ArtworkDB,
-} from "@/lib/supabase";
-import { useToast } from "@/hooks/use-toast";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ArtworksTab from "@/components/admin/ArtworksTab";
+import GalleryTab from "@/components/admin/GalleryTab";
+import AboutTab from "@/components/admin/AboutTab";
+import SettingsTab from "@/components/admin/SettingsTab";
 
 interface AdminPanelProps {
   onClose?: () => void;
 }
 
-export function AdminPanel({ onClose }: AdminPanelProps) {
-  const [artworks, setArtworks] = useState<Artwork[]>([]);
+export function AdminPanel(_: AdminPanelProps) {
+  return (
+    <div className="p-4 sm:p-6">
+      <Tabs defaultValue="artworks" className="w-full">
+        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 mb-6">
+          <TabsTrigger value="artworks">Artworks</TabsTrigger>
+          <TabsTrigger value="gallery">Gallery</TabsTrigger>
+          <TabsTrigger value="about">About</TabsTrigger>
+          <TabsTrigger value="settings">Site</TabsTrigger>
+        </TabsList>
+        <TabsContent value="artworks"><ArtworksTab /></TabsContent>
+        <TabsContent value="gallery"><GalleryTab /></TabsContent>
+        <TabsContent value="about"><AboutTab /></TabsContent>
+        <TabsContent value="settings"><SettingsTab /></TabsContent>
+      </Tabs>
+    </div>
+  );
+}
+
+// --- Legacy code removed; lives now in admin/ArtworksTab.tsx ---
+function _legacy_removed() {
+  return null;
+}
+/* removed legacy body
+  const [artworks, setArtworks] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -423,3 +423,4 @@ export function AdminPanel({ onClose }: AdminPanelProps) {
     </div>
   );
 }
+*/

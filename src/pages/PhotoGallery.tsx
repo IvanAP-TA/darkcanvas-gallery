@@ -1,12 +1,37 @@
+import { useEffect, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import PhotoGallery from "../components/PhotoGallery";
-import { photos } from "@/data/photos";
+import { photos as fallbackPhotos } from "@/data/photos";
 import SEO from "@/components/SEO";
 import { Helmet } from "react-helmet-async";
 import { useI18n } from "@/lib/i18n";
+import { fetchGalleryPhotosDB, isSupabaseConfigured } from "@/lib/supabase";
+import type { Photo } from "@/types/photo";
 
 const PhotoGalleryPage = () => {
   const { t } = useI18n();
+  const [photos, setPhotos] = useState<Photo[]>(fallbackPhotos);
+
+  useEffect(() => {
+    if (!isSupabaseConfigured()) return;
+    (async () => {
+      try {
+        const rows = await fetchGalleryPhotosDB();
+        if (rows.length > 0) {
+          setPhotos(
+            rows.map((r) => ({
+              id: r.id,
+              title: r.title,
+              imageUrl: r.image_url,
+              description: r.description,
+            }))
+          );
+        }
+      } catch {
+        /* keep fallback */
+      }
+    })();
+  }, []);
   
   return (
     <Layout>
