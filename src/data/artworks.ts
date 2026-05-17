@@ -74,14 +74,20 @@ export async function fetchArtworks(): Promise<Artwork[]> {
 
   inflight = (async () => {
     try {
-      const data = await fetchArtworksDB();
+      // Race the DB fetch against a short timeout: if Supabase is slow or
+      // blocked by CORS/network, we don't want the gallery to stay empty.
+      const timeoutMs = 4000;
+      const data = await Promise.race([
+        fetchArtworksDB(),
+        new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error("Supabase fetch timeout")), timeoutMs)
+        ),
+      ]);
       const mapped = data.map(mapDB).filter((a) => a.imageUrl && a.title);
-      // Use DB only if it returned at least one valid artwork; otherwise fall back
-      // to bundled static data so the gallery is never empty.
       cachedArtworks = mapped.length > 0 ? mapped : fallbackArtworks;
       return cachedArtworks;
     } catch (error) {
-      console.error("Error fetching artworks from Supabase:", error);
+      console.warn("[artworks] Falling back to static data:", error);
       cachedArtworks = fallbackArtworks;
       return cachedArtworks;
     } finally {
