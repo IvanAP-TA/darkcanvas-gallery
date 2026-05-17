@@ -4,6 +4,14 @@ import type { AboutContent, SiteSettings } from "@/types/artwork";
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || import.meta.env.VITE_SUPABASE_ANON_KEY;
 
+// Debug: log env var availability (keys only, not values for security)
+if (typeof window !== "undefined") {
+  console.log("[Supabase Debug] URL defined:", !!supabaseUrl);
+  console.log("[Supabase Debug] Key defined:", !!supabaseKey);
+  console.log("[Supabase Debug] PUBLISHABLE_KEY exists:", !!import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY);
+  console.log("[Supabase Debug] ANON_KEY exists:", !!import.meta.env.VITE_SUPABASE_ANON_KEY);
+}
+
 /**
  * Supabase client. `null` if env vars are missing — every helper below
  * checks `requireClient()` before issuing a request, so the app degrades
