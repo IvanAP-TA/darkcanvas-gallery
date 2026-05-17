@@ -75,7 +75,9 @@ export async function fetchArtworks(): Promise<Artwork[]> {
   inflight = (async () => {
     try {
       const data = await fetchArtworksDB();
-      const mapped = data.map(mapDB);
+      const mapped = data.map(mapDB).filter((a) => a.imageUrl && a.title);
+      // Use DB only if it returned at least one valid artwork; otherwise fall back
+      // to bundled static data so the gallery is never empty.
       cachedArtworks = mapped.length > 0 ? mapped : fallbackArtworks;
       return cachedArtworks;
     } catch (error) {

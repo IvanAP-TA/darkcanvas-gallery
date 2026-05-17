@@ -31,8 +31,8 @@ export default function Admin() {
   const handleLogin = async () => {
     if (!isSupabaseConfigured()) {
       toast({
-        title: "Error",
-        description: "Supabase is not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY.",
+        title: "Supabase Not Configured",
+        description: "VITE_SUPABASE_URL or VITE_SUPABASE_PUBLISHABLE_KEY missing. Check Vercel Dashboard → Settings → Environment Variables, then redeploy without cache.",
         variant: "destructive",
       });
       return;
