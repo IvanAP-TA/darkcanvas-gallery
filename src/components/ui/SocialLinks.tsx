@@ -22,7 +22,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     name: 'Etsy',
-    url: 'https://www.etsy.com/shop/AnnibaleArtworks?ref=dashboard-header',
+    url: 'https://annibaleatelier.etsy.com',
     icon: '/etsy-svgrepo-com.svg',
     color: 'hover:text-orange-600'
   }

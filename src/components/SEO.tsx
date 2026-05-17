@@ -84,7 +84,7 @@ export default function SEO({ title, description, image, url }: SEOProps) {
             "https://www.facebook.com/annibale.pace",
             "https://www.instagram.com/annibalepaceart/",
             "https://www.saatchiart.com/en-it/account/profile/2284565",
-            "https://www.etsy.com/shop/AnnibaleArtworks"
+            "https://annibaleatelier.etsy.com"
           ],
           "jobTitle": jobTitleMap[language],
           "description": descriptionMap[language],
