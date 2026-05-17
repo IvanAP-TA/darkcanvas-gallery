@@ -2,7 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import type { AboutContent, SiteSettings } from "@/types/artwork";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 /**
  * Supabase client. `null` if env vars are missing — every helper below
@@ -10,13 +10,14 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
  * gracefully to its static fallback data instead of crashing.
  */
 export const supabase =
-  supabaseUrl && supabaseAnonKey
-    ? createClient(supabaseUrl, supabaseAnonKey, {
+  supabaseUrl && supabaseKey
+    ? createClient(supabaseUrl, supabaseKey, {
         auth: { persistSession: true, autoRefreshToken: true },
       })
     : null;
 
-export const isSupabaseConfigured = () => !!supabase;
+export const isSupabaseConfigured = () =>
+  Boolean(supabaseUrl && supabaseKey);
 
 function requireClient() {
   if (!supabase) throw new Error("Supabase not configured");
